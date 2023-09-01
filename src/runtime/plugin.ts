@@ -52,14 +52,10 @@ export default defineNuxtPlugin({
 		}
 		if (!debug && delay && process.client) {
 			setTimeout(() => {
-				useHead({
-					script: [
-						{
-							defer: true,
-							src: YandexMetrika.src(cdn),
-						},
-					],
-				});
+				const script = document.createElement('script')
+				script.defer = true
+				script.src = YandexMetrika.src(cdn)
+				document.head.append(script)
 			}, delay);
 		}
 
