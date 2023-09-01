@@ -1,4 +1,4 @@
-import { InitParameters } from "./yandex-metrika";
+import { InitParameters } from "./runtime/yandex-metrika";
 
 export type YandexMetrikaModuleOptions = {
 	id: string;

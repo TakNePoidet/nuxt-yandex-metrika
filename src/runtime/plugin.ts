@@ -5,7 +5,7 @@ import {
 	useRuntimeConfig,
 } from "#imports";
 import { type YandexMetrikaModuleOptions } from "../types";
-import { Methods, YandexMetrika } from "../yandex-metrika";
+import { Methods, YandexMetrika } from "./yandex-metrika";
 
 export default defineNuxtPlugin({
 	parallel: true,
