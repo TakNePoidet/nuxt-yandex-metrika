@@ -95,12 +95,14 @@ export class YandexMetrika implements Events {
 	}
 
 	#call(type: Methods, ...args: unknown[]) {
-		// if (this.#debug) {
-		console.debug(
-			`${chalk.bgGreen(chalk.black("[yandex - metrika]"))} ${chalk.blue(type)}`,
-			...args,
-		);
-		// }
+		if (this.#debug) {
+			console.debug(
+				`${chalk.bgGreen(chalk.black("[yandex - metrika]"))} ${chalk.blue(
+					type,
+				)}`,
+				...args,
+			);
+		}
 
 		if (typeof window !== "undefined") {
 			console.log(window.ym);
