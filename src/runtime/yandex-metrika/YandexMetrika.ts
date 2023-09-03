@@ -113,7 +113,6 @@ export class YandexMetrika implements Events {
 		}
 
 		if (typeof window !== "undefined") {
-			console.log(window.ym);
 			window.ym(this.id, type, ...args);
 		}
 	}
