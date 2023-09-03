@@ -14,7 +14,7 @@ export * from "./types";
 export class YandexMetrika implements Events {
 	readonly #id: string;
 	#debug: boolean = false;
-	#verification: string = null;
+	#verification: string | null = null;
 
 	static src(cdn = false) {
 		return cdn
