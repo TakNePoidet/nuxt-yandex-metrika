@@ -1,5 +1,5 @@
 import {
-	addComponent,
+	addComponentsDir,
 	addImportsDir,
 	addPlugin,
 	createResolver,
@@ -38,9 +38,8 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 			src: resolver.resolve("./runtime/plugin"),
 		});
 
-		void addComponent({
-			name: "yandex-metrika-informer",
-			filePath: resolver.resolve("./runtime/yandex-metrika-informer.vue"),
+		void addComponentsDir({
+			path: resolver.resolve("runtime/components"),
 		});
 
 		addImportsDir(resolver.resolve("runtime/composables"));
