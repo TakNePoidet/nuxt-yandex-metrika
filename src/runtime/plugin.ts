@@ -31,8 +31,6 @@ export default defineNuxtPlugin({
 			});
 		}
 
-		function useYandexMetrikaHead() {}
-
 		if (debug || delay) {
 			useHead({
 				script: [
