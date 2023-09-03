@@ -1,6 +1,37 @@
 # Changelog
 
 
+## v1.1.0
+
+[compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.0.3...v1.1.0)
+
+### 🚀 Enhancements
+
+- Verification in Yandex Webmaster ([d045116](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/d045116))
+
+### 🩹 Fixes
+
+- **playground:** YandexMetrika config from nuxt.config.ts ([2bcc620](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/2bcc620))
+- **yandex-metrika:** Type #verification ([f0a4ed7](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/f0a4ed7))
+
+### 💅 Refactors
+
+- Creating a folder with components ([d92c89c](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/d92c89c))
+
+### 🏡 Chore
+
+- **yandex-metrika:** Removal console.log ([afc7a9f](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/afc7a9f))
+- **yandex-metrika:** Renaming the registrar label ([6668724](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/6668724))
+- **plugin:** Removing unnecessary code ([a2764bd](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/a2764bd))
+
+### 🎨 Styles
+
+- **plugin:** Bringing to a common code style ([e7dc9d6](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/e7dc9d6))
+
+### ❤️ Contributors
+
+- Yakin Nikita ([@TakNePoidet](http://github.com/TakNePoidet))
+
 ## v1.0.3
 
 [compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.0.2...v1.0.3)
