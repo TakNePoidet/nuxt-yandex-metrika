@@ -105,9 +105,7 @@ export class YandexMetrika implements Events {
 	#call(type: Methods, ...args: unknown[]) {
 		if (this.#debug) {
 			console.debug(
-				`${chalk.bgGreen(chalk.black("[yandex - metrika]"))} ${chalk.blue(
-					type,
-				)}`,
+				`${chalk.bgGreen(chalk.black("[yandex-metrika]"))} ${chalk.blue(type)}`,
 				...args,
 			);
 		}
