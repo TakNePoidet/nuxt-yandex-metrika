@@ -12,7 +12,14 @@ export default defineNuxtPlugin({
 	setup() {
 		const config = useRuntimeConfig().public
 			.yandexMetrika as YandexMetrikaModuleOptions;
-		const { id, cdn = false, delay = 0, debug, options = {} } = config;
+		const {
+			id,
+			cdn = false,
+			delay = 0,
+			debug,
+			verification = null,
+			options = {},
+		} = config;
 
 		if (!debug) {
 			useHead({
@@ -61,6 +68,7 @@ export default defineNuxtPlugin({
 
 		const yandexMetrika = new YandexMetrika(id);
 		yandexMetrika.debug = debug;
+		yandexMetrika.verification = verification;
 
 		if (process.client) {
 			let ready = false;

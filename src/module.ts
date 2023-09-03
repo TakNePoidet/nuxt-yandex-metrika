@@ -24,6 +24,7 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 		debug: process.env.NODE_ENV !== "production",
 		delay: 0,
 		cdn: false,
+		verification: null,
 		options: {},
 	},
 	setup(options, nuxt) {

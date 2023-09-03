@@ -5,5 +5,6 @@ export type YandexMetrikaModuleOptions = {
 	debug: boolean;
 	cdn: boolean;
 	delay: number;
+	verification: null | string;
 	options: Partial<InitParameters>;
 };

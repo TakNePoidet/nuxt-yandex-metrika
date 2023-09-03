@@ -45,6 +45,7 @@ export default defineNuxtConfig({
     // debug: process.env.NODE_ENV !== "production",
     // delay: 0,
     // cdn: false,
+    // verification: null, // Verification in Yandex Webmaster
     // options: {
     //  webvisor: true
     // },
@@ -76,9 +77,10 @@ For more information:
 
 ## Usage
 
-| Component Name              | Auto Imported | Description    |
-|-----------------------------|---------------|----------------|
-| `<YandexMetrikaInformer />` | ✅             | Shows informer |
+| Component Name              | Auto Imported | Description                      |
+|-----------------------------|---------------|----------------------------------|
+| `<YandexMetrikaInformer />` | ✅             | Shows informer                   |
+| `<YandexVerification />`    | ✅             | Verification in Yandex Webmaster |
 
 ### Methods
 

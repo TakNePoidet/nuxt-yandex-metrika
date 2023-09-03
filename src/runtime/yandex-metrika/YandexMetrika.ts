@@ -14,6 +14,7 @@ export * from "./types";
 export class YandexMetrika implements Events {
 	readonly #id: string;
 	#debug: boolean = false;
+	#verification: string = null;
 
 	static src(cdn = false) {
 		return cdn
@@ -31,6 +32,13 @@ export class YandexMetrika implements Events {
 
 	set debug(value: boolean) {
 		this.#debug = value;
+	}
+	get verification() {
+		return this.#verification;
+	}
+
+	set verification(value: string | null) {
+		this.#verification = value;
 	}
 
 	get id() {
