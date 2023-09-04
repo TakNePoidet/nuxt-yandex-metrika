@@ -57,19 +57,19 @@ export interface People {
 }
 
 export const enum Methods {
-	Init = "init",
-	AddFileExtension = "addFileExtension",
-	ExtLink = "extLink",
-	File = "file",
-	FirstPartyParams = "firstPartyParams",
-	FirstPartyParamsHashed = "firstPartyParamsHashed",
-	GetClientID = "getClientID",
-	Hit = "hit",
-	NotBounce = "notBounce",
-	Params = "params",
-	ReachGoal = "reachGoal",
-	SetUserID = "setUserID",
-	UserParams = "userParams",
+	Init = 'init',
+	AddFileExtension = 'addFileExtension',
+	ExtLink = 'extLink',
+	File = 'file',
+	FirstPartyParams = 'firstPartyParams',
+	FirstPartyParamsHashed = 'firstPartyParamsHashed',
+	GetClientID = 'getClientID',
+	Hit = 'hit',
+	NotBounce = 'notBounce',
+	Params = 'params',
+	ReachGoal = 'reachGoal',
+	SetUserID = 'setUserID',
+	UserParams = 'userParams'
 }
 
 export type Events = { [key in Methods]: (...args: any[]) => void };

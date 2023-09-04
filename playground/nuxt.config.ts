@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-	modules: ["../src/module"],
+	modules: ['../src/module'],
 	yandexMetrika: {
 		id: import.meta.env.YANDEX_METRIKA_ID,
 		delay: 0,
@@ -8,8 +8,8 @@ export default defineNuxtConfig({
 			clickmap: false,
 			trackLinks: true,
 			accurateTrackBounce: true,
-			webvisor: false,
-		},
+			webvisor: false
+		}
 	},
-	devtools: { enabled: true },
+	devtools: { enabled: true }
 });

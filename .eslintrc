@@ -1,8 +1,0 @@
-{
-	"root": true,
-	"extends": ["@nuxt/eslint-config"],
-	"rules": {
-		"@typescript-eslint/no-unused-vars": 0,
-		"prefer-rest-params": 0
-	}
-}

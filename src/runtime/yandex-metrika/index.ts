@@ -1,2 +1,2 @@
-export { YandexMetrika } from "./YandexMetrika";
-export * from "./types";
+export { YandexMetrika } from './YandexMetrika';
+export * from './types';
