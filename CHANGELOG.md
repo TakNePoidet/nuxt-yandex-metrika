@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.1.1
+
+[compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.1.0...v1.1.1)
+
+### 🩹 Fixes
+
+- **components:** Yandex-metrika-informer ([66f08ab](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/66f08ab))
+
+### 🎨 Styles
+
+- Updating the style guide ([71376ac](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/71376ac))
+
+### ❤️ Contributors
+
+- Yakin Nikita ([@TakNePoidet](http://github.com/TakNePoidet))
+
 ## v1.1.0
 
 [compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.0.3...v1.1.0)
