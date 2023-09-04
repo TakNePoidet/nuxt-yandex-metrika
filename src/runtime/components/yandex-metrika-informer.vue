@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useYandexMetrika } from './composables/useYandexMetrika';
+import { useYandexMetrika } from '../composables/useYandexMetrika';
 const { id } = useYandexMetrika();
 </script>
 
