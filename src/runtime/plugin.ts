@@ -78,9 +78,12 @@ export default defineNuxtPlugin({
 			provide: {
 				yandexMetrika: new Proxy(yandexMetrika, {
 					get(target, name) {
+						// @ts-ignore
 						if (typeof target[name] === 'function') {
+							// @ts-ignore
 							return target[name].bind(target);
 						}
+						// @ts-ignore
 						return target[name];
 					}
 				})
