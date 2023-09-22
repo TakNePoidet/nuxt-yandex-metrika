@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v1.2.0
+
+[compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.1.1...v1.2.0)
+
+### 🚀 Enhancements
+
+- **plugin:** Key in head ([ec157d8](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/ec157d8))
+
+### 🩹 Fixes
+
+- **plugin:** Undefined window.ym ([c9cc9e7](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/c9cc9e7))
+
+### 🏡 Chore
+
+- **plugin:** Type ([da1a69f](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/da1a69f))
+
+### ❤️ Contributors
+
+- Yakin Nikita ([@TakNePoidet](http://github.com/TakNePoidet))
+
 ## v1.1.1
 
 [compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.1.0...v1.1.1)
