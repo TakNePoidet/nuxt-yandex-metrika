@@ -12,6 +12,7 @@ export default defineNuxtPlugin({
 			useHead({
 				noscript: [
 					{
+						key: 'yandex-metrika-noscript',
 						innerHTML: `<div><img src="https://mc.yandex.ru/watch/${id}" style="position:absolute; left:-9999px;" alt="" />`
 					}
 				]
@@ -22,9 +23,11 @@ export default defineNuxtPlugin({
 			useHead({
 				script: [
 					{
+						key: 'yandex-metrika-ym',
 						innerHTML: `window.ym=window.ym||function(){(window.ym.a=window.ym.a||[]).push(arguments)};window.ym.l=(new Date).getTime();`
 					},
 					{
+						key: 'yandex-metrika-init',
 						innerHTML: `ym("${id}","${Methods.Init}", ${JSON.stringify(options)});`
 					}
 				]
@@ -33,6 +36,7 @@ export default defineNuxtPlugin({
 			useHead({
 				script: [
 					{
+						key: 'yandex-metrika',
 						innerHTML: `(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date(); for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }} k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "${YandexMetrika.src(
 							cdn
 						)}", "ym");`
