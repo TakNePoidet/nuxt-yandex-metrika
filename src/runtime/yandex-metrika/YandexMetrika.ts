@@ -93,7 +93,7 @@ export class YandexMetrika implements Events {
 			console.debug(`${chalk.bgGreen(chalk.black('[yandex-metrika]'))} ${chalk.blue(type)}`, ...args);
 		}
 
-		if (typeof window !== 'undefined') {
+		if (typeof window !== 'undefined' && window.ym) {
 			window.ym(this.id, type, ...args);
 		}
 	}
