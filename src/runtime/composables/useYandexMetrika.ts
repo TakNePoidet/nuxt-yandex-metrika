@@ -1,4 +1,4 @@
-import { useNuxtApp } from '#imports';
+import { useNuxtApp } from '#app';
 import { YandexMetrika } from '../yandex-metrika';
 
 export function useYandexMetrika(): YandexMetrika {

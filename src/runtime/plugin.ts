@@ -1,4 +1,4 @@
-import { defineNuxtPlugin, useHead, useRouter, useRuntimeConfig } from '#imports';
+import { defineNuxtPlugin, useHead, useRouter, useRuntimeConfig } from '#app';
 import { type YandexMetrikaModuleOptions } from '../types';
 import { Methods, YandexMetrika } from './yandex-metrika';
 
@@ -61,7 +61,10 @@ export default defineNuxtPlugin({
 			let ready = false;
 			const router = useRouter();
 
+
+
 			void router.isReady().then(() => {
+				console.log(router.options.routes)
 				ready = true;
 			});
 
