@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.2.2
+
+[compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.2.1...v1.2.2)
+
+### 🩹 Fixes
+
+- **yandex-metrika:** Remove console.log ([1901f90](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/1901f90))
+
+### ❤️ Contributors
+
+- Yakin Nikita ([@TakNePoidet](http://github.com/TakNePoidet))
+
 ## v1.2.1
 
 [compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.2.0...v1.2.1)
