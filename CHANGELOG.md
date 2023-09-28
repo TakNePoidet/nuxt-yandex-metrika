@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.2.1
+
+[compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.2.0...v1.2.1)
+
+### 🏡 Chore
+
+- **yandex-metrika:** Change in imports ([8a2a650](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/8a2a650))
+
+### ❤️ Contributors
+
+- Yakin Nikita ([@TakNePoidet](http://github.com/TakNePoidet))
+
 ## v1.2.0
 
 [compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.1.1...v1.2.0)
