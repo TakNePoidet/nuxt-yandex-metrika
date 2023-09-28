@@ -61,10 +61,7 @@ export default defineNuxtPlugin({
 			let ready = false;
 			const router = useRouter();
 
-
-
 			void router.isReady().then(() => {
-				console.log(router.options.routes)
 				ready = true;
 			});
 
