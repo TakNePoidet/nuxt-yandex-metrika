@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v1.2.3
+
+[compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.2.2...v1.2.3)
+
+### 🩹 Fixes
+
+- Duplicate import `useYandexMetrika` ([575aa6d](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/575aa6d))
+
+### 🏡 Chore
+
+- **release:** V1.2.2 ([6832355](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/6832355))
+- Update dependencies ([1e41ea2](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/1e41ea2))
+
+### 🎨 Styles
+
+- Update linting ([f3d0b3b](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/f3d0b3b))
+
+### ❤️ Contributors
+
+- Yakin Nikita ([@TakNePoidet](http://github.com/TakNePoidet))
+
 ## v1.2.2
 
 [compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.2.1...v1.2.2)
