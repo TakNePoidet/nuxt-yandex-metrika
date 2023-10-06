@@ -1,4 +1,4 @@
-import { addComponentsDir, addImportsDir, addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit';
+import { addComponentsDir, addImports, addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit';
 import { defu } from 'defu';
 
 import { name, version } from '../package.json';
@@ -38,6 +38,10 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 			path: resolver.resolve('runtime/components')
 		});
 
-		addImportsDir(resolver.resolve('runtime/composables'));
+		addImports({
+			name: 'useYandexMetrika',
+			as: 'useYandexMetrika',
+			from: resolver.resolve('runtime/composables/useYandexMetrika')
+		});
 	}
 });
