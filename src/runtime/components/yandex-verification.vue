@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { useYandexMetrika } from '../composables/useYandexMetrika';
 import chalk from 'chalk';
+
+import { useYandexMetrika } from '../composables/useYandexMetrika';
 
 const { verification } = useYandexMetrika();
 

@@ -1,5 +1,6 @@
 import { addComponentsDir, addImportsDir, addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit';
 import { defu } from 'defu';
+
 import { name, version } from '../package.json';
 import { type YandexMetrikaModuleOptions } from './types';
 

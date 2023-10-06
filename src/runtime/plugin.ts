@@ -1,4 +1,5 @@
 import { defineNuxtPlugin, useHead, useRouter, useRuntimeConfig } from '#app';
+
 import { type YandexMetrikaModuleOptions } from '../types';
 import { Methods, YandexMetrika } from './yandex-metrika';
 
