@@ -39,22 +39,22 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@nuxt/kit": "^3.7.0",
+		"@nuxt/kit": "^3.7.4",
 		"chalk": "^5.3.0",
 		"defu": "^6.1.2"
 	},
 	"devDependencies": {
 		"@nuxt/devtools": "latest",
 		"@poidet/eslint-config-nuxt": "^0.3.0",
-		"@nuxt/module-builder": "^0.4.0",
-		"@nuxt/schema": "^3.7.0",
+		"@nuxt/module-builder": "^0.5.2",
+		"@nuxt/schema": "^3.7.4",
 		"@poidet/prettier": "^0.3.0",
-		"@types/node": "^18.17.3",
-		"changelogen": "^0.5.4",
-		"eslint": "^8.48.0",
+		"@types/node": "^20.8.2",
+		"changelogen": "^0.5.5",
+		"eslint": "^8.50.0",
 		"husky": "^8.0.3",
 		"lint-staged": "^14.0.1",
-		"nuxt": "^3.7.0",
+		"nuxt": "^3.7.4",
 		"prettier": "^3.0.3"
 	},
 	"packageManager": "pnpm@7.17.1",
