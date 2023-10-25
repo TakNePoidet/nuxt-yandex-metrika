@@ -26,10 +26,10 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build",
+    "prepack": "nuxt-module-build prepack",
     "dev": "nuxi dev playground",
-    "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "dev:build": "nuxi build playground build",
+    "dev:prepare": "nuxt-module-build prepack --stub && nuxi prepare playground",
     "release": "npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "prettier": "prettier --write .",
     "lint": "eslint --fix .",
