@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 
-import { Events, HitOptions, InitParameters, Methods, People, UserParameters, VisitParameters } from './types';
+import type { Events, HitOptions, InitParameters, People, UserParameters, VisitParameters } from './types';
+import { Methods } from './types';
 
 export * from './types';
 

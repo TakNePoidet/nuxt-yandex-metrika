@@ -1,6 +1,6 @@
 import { useNuxtApp } from '#app';
 
-import { YandexMetrika } from '../yandex-metrika';
+import type { YandexMetrika } from '../yandex-metrika';
 
 export function useYandexMetrika(): YandexMetrika {
 	const { $yandexMetrika } = useNuxtApp();
