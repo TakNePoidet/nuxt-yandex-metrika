@@ -16,10 +16,6 @@ export default defineNuxtPlugin({
 					{
 						key: 'yandex-metrika-ym',
 						innerHTML: `window.ym=window.ym||function(){(window.ym.a=window.ym.a||[]).push(arguments)};window.ym.l=(new Date).getTime();`
-					},
-					{
-						key: 'yandex-metrika-init',
-						innerHTML: `ym("${id}","${Methods.Init}", ${JSON.stringify(options)});`
 					}
 				]
 			});
@@ -55,6 +51,15 @@ export default defineNuxtPlugin({
 				});
 			}
 		}
+
+		useHead({
+			script: [
+				{
+					key: 'yandex-metrika-init',
+					innerHTML: `ym("${id}","${Methods.Init}", ${JSON.stringify(options)});`
+				}
+			]
+		})
 
 		const yandexMetrika = new YandexMetrika(id);
 		yandexMetrika.debug = debug;
