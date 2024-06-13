@@ -31,6 +31,7 @@ export interface InitParameters {
 	type?: number;
 	webvisor?: boolean;
 	triggerEvent?: boolean;
+	sendTitle: boolean;
 }
 
 export interface HitOptions<CTX> {

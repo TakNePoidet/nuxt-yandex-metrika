@@ -38,7 +38,7 @@ export class YandexMetrika implements Events {
 		return this.#id;
 	}
 
-	init(options: InitParameters = {}) {
+	init(options: Partial<InitParameters> = {}) {
 		this.#call(Methods.Init, ...arguments);
 	}
 
@@ -92,7 +92,7 @@ export class YandexMetrika implements Events {
 
 	#call(type: Methods, ...args: unknown[]) {
 		if (this.#debug) {
-			console.debug(`${chalk.bgGreen(chalk.black('[yandex-metrika]'))} ${chalk.blue(type)}`, ...args);
+			console.log(`${chalk.bgGreen(chalk.black('[yandex-metrika]'))} ${chalk.blue(type)}`, ...args);
 		}
 
 		if (typeof window !== 'undefined' && window.ym) {

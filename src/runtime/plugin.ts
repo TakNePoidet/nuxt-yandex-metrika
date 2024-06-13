@@ -1,4 +1,5 @@
-import { defineNuxtPlugin, useHead, useRouter, useRuntimeConfig } from '#app';
+import { defineNuxtPlugin, useRouter, useRuntimeConfig } from '#app';
+import { useHead } from '#imports';
 
 import { type YandexMetrikaModuleOptions } from '../types';
 import { Methods, YandexMetrika } from './yandex-metrika';
@@ -9,18 +10,7 @@ export default defineNuxtPlugin({
 		const config = useRuntimeConfig().public.yandexMetrika as YandexMetrikaModuleOptions;
 		const { id, cdn = false, delay = 0, debug, verification = null, options = {} } = config;
 
-		if (!debug) {
-			useHead({
-				noscript: [
-					{
-						key: 'yandex-metrika-noscript',
-						innerHTML: `<div><img src="https://mc.yandex.ru/watch/${id}" style="position:absolute; left:-9999px;" alt="" />`
-					}
-				]
-			});
-		}
-
-		if (debug || delay) {
+		if (import.meta.dev) {
 			useHead({
 				script: [
 					{
@@ -35,23 +25,35 @@ export default defineNuxtPlugin({
 			});
 		} else {
 			useHead({
-				script: [
+				noscript: [
 					{
-						key: 'yandex-metrika',
-						innerHTML: `(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date(); for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }} k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "${YandexMetrika.src(
-							cdn
-						)}", "ym");`
+						key: 'yandex-metrika-noscript',
+						innerHTML: `<div><img src="https://mc.yandex.ru/watch/${id}" style="position:absolute; left:-9999px;" alt="" />`
 					}
 				]
 			});
-		}
-		if (!debug && delay && process.client) {
-			setTimeout(() => {
-				const script = document.createElement('script');
-				script.defer = true;
-				script.src = YandexMetrika.src(cdn);
-				document.head.append(script);
-			}, delay);
+
+			if (delay && delay > 0) {
+				if (process.client) {
+					setTimeout(() => {
+						const script = document.createElement('script');
+						script.defer = true;
+						script.src = YandexMetrika.src(cdn);
+						document.head.append(script);
+					}, delay);
+				}
+			} else {
+				useHead({
+					script: [
+						{
+							key: 'yandex-metrika',
+							innerHTML: `(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date(); for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }} k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "${YandexMetrika.src(
+								cdn
+							)}", "ym");`
+						}
+					]
+				});
+			}
 		}
 
 		const yandexMetrika = new YandexMetrika(id);

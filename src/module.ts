@@ -20,7 +20,18 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 		delay: 0,
 		cdn: false,
 		verification: null,
-		options: {}
+		options: {
+			accurateTrackBounce: true,
+			childIframe: true,
+			clickmap: true,
+			defer: false,
+			ecommerce: false,
+			trackHash: false,
+			trackLinks: true,
+			webvisor: false,
+			triggerEvent: false,
+			sendTitle: true
+		}
 	},
 	setup(options, nuxt) {
 		nuxt.options.runtimeConfig.public.yandexMetrika = defu(
