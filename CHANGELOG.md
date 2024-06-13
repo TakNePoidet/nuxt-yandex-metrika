@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.2.5
+
+[compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.2.4...v1.2.5)
+
+### 🩹 Fixes
+
+- Types ([f46f18b](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/f46f18b))
+- Init ([e97f348](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/e97f348))
+
+### ❤️ Contributors
+
+- Yakin Nikita ([@TakNePoidet](http://github.com/TakNePoidet))
+
 ## v1.2.4
 
 [compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.2.3...v1.2.4)
