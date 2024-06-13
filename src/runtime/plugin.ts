@@ -34,7 +34,7 @@ export default defineNuxtPlugin({
 			});
 
 			if (delay && delay > 0) {
-				if (process.client) {
+				if (import.meta.client) {
 					setTimeout(() => {
 						const script = document.createElement('script');
 						script.defer = true;
@@ -60,7 +60,7 @@ export default defineNuxtPlugin({
 		yandexMetrika.debug = debug;
 		yandexMetrika.verification = verification;
 
-		if (process.client) {
+		if (import.meta.client) {
 			let ready = false;
 			const router = useRouter();
 
@@ -81,12 +81,15 @@ export default defineNuxtPlugin({
 			provide: {
 				yandexMetrika: new Proxy(yandexMetrika, {
 					get(target, name) {
-						// @ts-ignore
+						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+						// @ts-expect-error
 						if (typeof target[name] === 'function') {
-							// @ts-ignore
+							// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+							// @ts-expect-error
 							return target[name].bind(target);
 						}
-						// @ts-ignore
+						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+						// @ts-expect-error
 						return target[name];
 					}
 				})
