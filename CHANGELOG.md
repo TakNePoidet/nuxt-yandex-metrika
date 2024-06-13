@@ -1,6 +1,29 @@
 # Changelog
 
 
+## v1.2.4
+
+[compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.2.3...v1.2.4)
+
+### 🩹 Fixes
+
+- Nuxt-module-build ([e50cba7](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/e50cba7))
+
+### 🏡 Chore
+
+- Update dependencies ([c46200f](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/c46200f))
+- Update YandexMetrika ([57e5c76](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/57e5c76))
+- Update dependencies ([fbc3a7f](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/fbc3a7f))
+- Update linting ([5db1faa](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/5db1faa))
+
+### 🎨 Styles
+
+- Fix style ([e70622e](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/e70622e))
+
+### ❤️ Contributors
+
+- Yakin Nikita ([@TakNePoidet](http://github.com/TakNePoidet))
+
 ## v1.2.3
 
 [compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.2.2...v1.2.3)
