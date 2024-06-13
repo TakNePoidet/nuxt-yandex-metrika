@@ -31,7 +31,7 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 			webvisor: false,
 			triggerEvent: false,
 			sendTitle: true
-		}
+		} as Partial<YandexMetrikaModuleOptions['options']>,
 	},
 	setup(options, nuxt) {
 		nuxt.options.runtimeConfig.public.yandexMetrika = defu(
