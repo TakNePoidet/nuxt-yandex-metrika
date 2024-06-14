@@ -1,6 +1,6 @@
 {
   "name": "nuxt-yandex-metrika",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Add Yandex Metrika to your Nuxt 3 application.",
   "repository": {
     "type": "git",
