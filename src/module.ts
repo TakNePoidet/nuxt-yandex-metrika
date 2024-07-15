@@ -36,8 +36,29 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 	setup(options, nuxt) {
 		nuxt.options.runtimeConfig.public.yandexMetrika = defu(
 			nuxt.options.runtimeConfig.public.yandexMetrika ?? {},
-			options
+			options,
+			{
+				id: 'xxx',
+				debug: process.env.NODE_ENV !== 'production',
+				delay: 0,
+				cdn: false,
+				verification: null,
+				options: {
+					accurateTrackBounce: true,
+					childIframe: true,
+					clickmap: true,
+					defer: false,
+					ecommerce: false,
+					trackHash: false,
+					trackLinks: true,
+					webvisor: false,
+					triggerEvent: false,
+					sendTitle: true
+				}
+			}
 		);
+
+		console.log(nuxt.options.runtimeConfig.public.yandexMetrika)
 		const resolver = createResolver(import.meta.url);
 
 		addPlugin({
