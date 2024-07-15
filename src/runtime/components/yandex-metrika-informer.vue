@@ -15,6 +15,6 @@ const { id } = useYandexMetrika();
 			class="ym-advanced-informer"
 			:data-cid="id"
 			data-lang="ru"
-	/></a>
+	></a>
 	<!-- /Yandex.Metrika informer -->
 </template>

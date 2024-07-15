@@ -31,7 +31,7 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 			webvisor: false,
 			triggerEvent: false,
 			sendTitle: true
-		} as Partial<YandexMetrikaModuleOptions['options']>,
+		} as Partial<YandexMetrikaModuleOptions['options']>
 	},
 	setup(options, nuxt) {
 		nuxt.options.runtimeConfig.public.yandexMetrika = defu(
@@ -58,7 +58,7 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 			}
 		);
 
-		console.log(nuxt.options.runtimeConfig.public.yandexMetrika)
+		console.log(nuxt.options.runtimeConfig.public.yandexMetrika);
 		const resolver = createResolver(import.meta.url);
 
 		addPlugin({

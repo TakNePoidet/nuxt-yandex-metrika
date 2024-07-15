@@ -59,7 +59,7 @@ export default defineNuxtPlugin({
 					innerHTML: `ym("${id}","${Methods.Init}", ${JSON.stringify(options)});`
 				}
 			]
-		})
+		});
 
 		const yandexMetrika = new YandexMetrika(id);
 		yandexMetrika.debug = debug;

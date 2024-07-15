@@ -1,70 +1,70 @@
 {
-  "name": "nuxt-yandex-metrika",
-  "version": "1.2.7",
-  "description": "Add Yandex Metrika to your Nuxt 3 application.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TakNePoidet/nuxt-yandex-metrika.git"
-  },
-  "homepage": "TakNePoidet/nuxt-yandex-metrika",
-  "license": "MIT",
-  "type": "module",
-  "author": {
-    "name": "TakNePoidet <https://taknepoidet.xyz/>",
-    "url": "https://github.com/TakNePoidet"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
-    }
-  },
-  "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "prepack": "nuxt-module-build build",
-    "dev": "nuxi dev playground",
-    "dev:build": "nuxi build playground build",
-    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
-    "prettier": "prettier --write .",
-    "lint": "eslint --fix .",
-    "prepare": "husky install"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "dependencies": {
-    "@nuxt/kit": "^3.12.1",
-    "chalk": "^5.3.0",
-    "defu": "^6.1.4"
-  },
-  "devDependencies": {
-    "@nuxt/devtools": "latest",
-    "@nuxt/eslint-config": "^0.3.13",
-    "@nuxt/module-builder": "^0.7.1",
-    "@nuxt/schema": "^3.12.1",
-    "@poidet/prettier": "^0.8.0",
-    "@types/node": "^20.14.2",
-    "changelogen": "^0.5.5",
-    "eslint": "^9.4.0",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.7",
-    "nuxt": "^3.12.1",
-    "prettier": "^3.3.2"
-  },
-  "lint-staged": {
-    "**/*.(ts|vue)": [
-      "eslint --fix",
-      "git add"
-    ],
-    "**/*.*": [
-      "prettier --write",
-      "git add"
-    ]
-  }
+	"name": "nuxt-yandex-metrika",
+	"version": "1.2.7",
+	"description": "Add Yandex Metrika to your Nuxt 3 application.",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TakNePoidet/nuxt-yandex-metrika.git"
+	},
+	"homepage": "TakNePoidet/nuxt-yandex-metrika",
+	"license": "MIT",
+	"type": "module",
+	"author": {
+		"name": "TakNePoidet <https://taknepoidet.xyz/>",
+		"url": "https://github.com/TakNePoidet"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/types.d.ts",
+			"import": "./dist/module.mjs",
+			"require": "./dist/module.cjs"
+		}
+	},
+	"main": "./dist/module.cjs",
+	"types": "./dist/types.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"prepack": "nuxt-module-build build",
+		"dev": "nuxi dev playground",
+		"dev:build": "nuxi build playground build",
+		"dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+		"release": "npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+		"prettier": "prettier --write .",
+		"lint": "eslint --fix .",
+		"prepare": "husky install"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@nuxt/kit": "^3.12.1",
+		"chalk": "^5.3.0",
+		"defu": "^6.1.4"
+	},
+	"devDependencies": {
+		"@nuxt/devtools": "latest",
+		"@nuxt/eslint-config": "^0.3.13",
+		"@nuxt/module-builder": "^0.7.1",
+		"@nuxt/schema": "^3.12.1",
+		"@poidet/prettier": "^0.8.0",
+		"@types/node": "^20.14.2",
+		"changelogen": "^0.5.5",
+		"eslint": "^9.4.0",
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.7",
+		"nuxt": "^3.12.1",
+		"prettier": "^3.3.2"
+	},
+	"lint-staged": {
+		"**/*.(ts|vue)": [
+			"eslint --fix",
+			"git add"
+		],
+		"**/*.*": [
+			"prettier --write",
+			"git add"
+		]
+	}
 }
