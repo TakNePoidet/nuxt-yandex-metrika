@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v1.2.8
+
+[compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.2.7...v1.2.8)
+
+### 🩹 Fixes
+
+- Default option ([38be4b4](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/38be4b4))
+
+### 🏡 Chore
+
+- Update dependencies ([44e1c87](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/44e1c87))
+- Indicate compatibility with nuxt v4 ([53bd876](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/53bd876))
+
+### 🎨 Styles
+
+- Fix ([0bdc97b](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/0bdc97b))
+
+### ❤️ Contributors
+
+- Yakin Nikita ([@TakNePoidet](http://github.com/TakNePoidet))
+
 ## v1.2.7
 
 [compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.2.6...v1.2.7)
