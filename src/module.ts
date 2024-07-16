@@ -58,7 +58,6 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 			}
 		);
 
-		console.log(nuxt.options.runtimeConfig.public.yandexMetrika);
 		const resolver = createResolver(import.meta.url);
 
 		addPlugin({
