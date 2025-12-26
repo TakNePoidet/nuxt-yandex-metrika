@@ -36,7 +36,7 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 			options,
 			{
 				id: 'xxx',
-				debug: process.env.NODE_ENV !== 'production',
+				debug: import.meta.env.NODE_ENV !== 'production',
 				delay: 0,
 				cdn: false,
 				verification: null,
