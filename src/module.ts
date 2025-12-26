@@ -1,13 +1,10 @@
 import { addComponentsDir, addImports, addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit';
 import { defu } from 'defu';
-
-import { name, version } from '../package.json';
-import { type YandexMetrikaModuleOptions } from './types';
+import type { YandexMetrikaModuleOptions } from './types';
 
 export default defineNuxtModule<YandexMetrikaModuleOptions>({
 	meta: {
-		name,
-		version,
+		name: 'nuxt-yandex-metrika',
 		configKey: 'yandexMetrika',
 		compatibility: {
 			nuxt: '>=3.0.0',
@@ -16,7 +13,7 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 	// Default configuration options of the Nuxt module
 	defaults: {
 		id: 'xxx',
-		debug: process.env.NODE_ENV !== 'production',
+		debug: import.meta.env.NODE_ENV !== 'production',
 		delay: 0,
 		cdn: false,
 		verification: null,
