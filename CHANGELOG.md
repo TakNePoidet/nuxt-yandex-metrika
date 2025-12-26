@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.3.1
+
+[compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.3.0...v1.3.1)
+
+### 🏡 Chore
+
+- Fix ([66faf5a](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/66faf5a))
+
+### ❤️ Contributors
+
+- TakNePidet ([@TakNePoidet](https://github.com/TakNePoidet))
+
 ## v1.3.0
 
 [compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v1.2.9...v1.3.0)
