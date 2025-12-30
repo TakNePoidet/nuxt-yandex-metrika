@@ -1,10 +1,4 @@
-import type { InitParameters } from './runtime/yandex-metrika';
+import type { InferOutput } from 'valibot';
+import type { YandexMetrikaSchemeOptions } from './runtime/scheme';
 
-export type YandexMetrikaModuleOptions = {
-	id: string;
-	debug: boolean;
-	cdn: boolean;
-	delay: number;
-	verification: null | string;
-	options: Partial<InitParameters>;
-};
+export type YandexMetrikaModuleOptions = InferOutput<typeof YandexMetrikaSchemeOptions>;

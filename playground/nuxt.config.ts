@@ -2,7 +2,8 @@ export default defineNuxtConfig({
 	modules: ['../src/module'],
 	yandexMetrika: {
 		id: import.meta.env.YANDEX_METRIKA_ID,
-		delay: 1000,
+		delay: 0,
+		verification: 'dfdsfdfsfsd',
 		debug: true,
 		options: {
 			clickmap: false,

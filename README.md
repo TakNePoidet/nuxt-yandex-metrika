@@ -31,7 +31,7 @@ npm install --save-dev nuxt-yandex-metrika
 
 ```ts
 export default defineNuxtConfig({
-  modules: ["nuxt-yandex-metrika"],
+	modules: ['nuxt-yandex-metrika']
 });
 ```
 
@@ -56,7 +56,7 @@ export default defineNuxtConfig({
 ## Options
 
 | Name                | Default value | Type    | Description                                                                                                                                      |
-|---------------------|---------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------- | ------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | accurateTrackBounce | true          | Boolean | Number                                                                                                                                           | Accurate bounce rate The parameter can accept these values: true — Enable the accurate bounce rate, with a non-bounce event registered after 15000 ms (15 s). false — Don't enable the accurate bounce rate. <N> (integer) — Enable the accurate bounce rate. Non-bounce events are recorded after <N> ms. |
 | childIframe         | false         | Boolean | Whether to record iframe contents without a tag in a child window                                                                                |
 | clickmap            | true          | Boolean | Whether to collect data for a click map                                                                                                          |
@@ -75,25 +75,21 @@ For more information:
 
 - [Documentation for Ya.Metrika](https://yandex.com/support/metrica/code/counter-initialize.html)
 
-## Usage
-
-| Component Name              | Auto Imported | Description                      |
-|-----------------------------|---------------|----------------------------------|
-| `<YandexMetrikaInformer />` | ✅             | Shows informer                   |
-| `<YandexVerification />`    | ✅             | Verification in Yandex Webmaster |
 
 ### Methods
 
 ```vue
-<template>
-    <button @click.prevent.stop="reachGoal('click', {})">click</button>
-</template>
-
 <script setup lang="ts">
-import { useYandexMetrika } from "#imports";
+import { useYandexMetrika } from '#imports';
 
 const { reachGoal } = useYandexMetrika();
 </script>
+
+<template>
+	<button @click.prevent.stop="reachGoal('click', {})">
+		click
+	</button>
+</template>
 ```
 
 - [For more information](https://yandex.com/support/metrica/objects/method-reference.html?lang=en)
