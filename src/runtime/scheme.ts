@@ -1,5 +1,5 @@
 import type { GenericSchema } from 'valibot';
-import type { InitParameters } from '../yandex-metrika';
+import type { InitParameters } from './yandex-metrika';
 import { any, array, boolean, looseObject, nullish, number, object, optional, string, union } from 'valibot';
 
 const options = object({

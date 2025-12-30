@@ -1,11 +1,11 @@
 import type { YandexMetrikaModuleOptions } from '../types';
-import type { YandexMetrikaApi } from '../yandex-metrika';
+import type { YandexMetrikaApi } from './yandex-metrika';
 import { useRuntimeConfig } from '#app';
 
 import { useHead, useScriptTriggerIdleTimeout } from '#imports';
 import { useRegistryScript } from '#nuxt-scripts/utils';
-import { metrika } from '../yandex-metrika';
 import { YandexMetrikaSchemeOptions } from './scheme';
+import { metrika } from './yandex-metrika';
 
 export function useYandexMetrikaScript<T extends YandexMetrikaApi>() {
 	return useRegistryScript<T, typeof YandexMetrikaSchemeOptions>(
