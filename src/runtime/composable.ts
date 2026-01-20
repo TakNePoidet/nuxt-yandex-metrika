@@ -26,7 +26,7 @@ export function useYandexMetrikaScript<T extends YandexMetrikaApi>() {
 				useHead({
 					noscript: [
 						{
-							innerHTML: `<div><img src="https://mc.yandex.ru/watch/${id}" style="position:absolute; left:-9999px;" alt="" />`,
+							innerHTML: `<img src="https://mc.yandex.ru/watch/${id}" style="position:absolute; left:-9999px;" alt="">`,
 							tagPosition: 'bodyOpen'
 						}
 					]
