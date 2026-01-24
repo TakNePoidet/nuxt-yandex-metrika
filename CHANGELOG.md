@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.0.2
+
+[compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v2.0.1...v2.0.2)
+
+### 🩹 Fixes
+
+- Correct production initialization and update docs ([ee5bad9](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/ee5bad9))
+
+### ❤️ Contributors
+
+- TakNePidet ([@TakNePoidet](https://github.com/TakNePoidet))
+
 ## v2.0.1
 
 [compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v2.0.0...v2.0.1)
