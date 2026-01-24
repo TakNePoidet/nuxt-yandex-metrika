@@ -5,14 +5,13 @@ import { consola } from 'consola';
 import { Methods } from './types';
 
 export * from './types';
+
 export function metrika(id: string, debug: boolean = false): YandexMetrikaApi {
 	function call(type: ValueOf<typeof Methods>, ...args: unknown[]) {
 		if (debug) {
 			consola.info(`[yandex-metrika] ${type}`, ...args);
 		}
-		if (typeof window !== 'undefined' && window.ym) {
-			window.ym(id, type, ...args);
-		}
+		window.ym(id, type, ...args);
 	}
 
 	return {

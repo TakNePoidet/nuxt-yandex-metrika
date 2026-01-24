@@ -50,6 +50,7 @@
 	"dependencies": {
 		"@nuxt/kit": "^4.2.2",
 		"@prleasing/utility": "^5.0.1",
+		"@vueuse/core": "^14.1.0",
 		"consola": "^3.4.2",
 		"defu": "^6.1.4",
 		"valibot": "^1.2.0"

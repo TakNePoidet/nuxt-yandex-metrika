@@ -2,10 +2,10 @@
 Find and replace all on all files (CMD+SHIFT+F):
 - Name: Yandex Metrika
 - Package name: nuxt-yandex-metrika
-- Description: Yandex Metrika for Nuxt 3
+- Description: Yandex Metrika for Nuxt 4
 -->
 
-# Yandex Metrika for Nuxt 3
+# Yandex Metrika for Nuxt 4
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -52,6 +52,17 @@ export default defineNuxtConfig({
   }
 }
 ```
+
+| Name           | Default value | Type                             | Description                                                                                             |
+|----------------|---------------|----------------------------------|---------------------------------------------------------------------------------------------------------|
+| `id`           | —             | `string`                         | **Required.** Yandex Metrika counter ID                                                                 |
+| `debug`        | `false`       | `boolean`                        | Enables debug mode. Useful during development. When enabled, additional logs are printed to the console |
+| `delay`        | `0`           | `number`                         | Delay (in milliseconds) before initializing Yandex Metrika                                              |
+| `cdn`          | `false`       | `boolean`                        | Load Metrika script from Yandex CDN instead of the default source                                       |
+| `verification` | `null`        | `string \| null`                 | Verification code for **Yandex Webmaster** (adds `<meta name="yandex-verification">`)                   |
+| `position`     | `'head'`      | `'head' \| 'body' \| 'bodyOpen'` | Script injection position in the HTML document                                                          |
+| `options`      | `{}`          | `object`                         | Yandex Metrika initialization options (see table below)                                                 |
+
 
 ## Options
 

@@ -21,6 +21,7 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 		delay: 0,
 		cdn: false,
 		verification: null,
+		position: 'head',
 		options: {
 			accurateTrackBounce: true,
 			childIframe: true,
@@ -43,6 +44,7 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 				delay: 0,
 				cdn: false,
 				verification: null,
+				position: 'head',
 				options: {
 					accurateTrackBounce: true,
 					childIframe: true,

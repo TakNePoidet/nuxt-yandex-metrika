@@ -1,6 +1,6 @@
 import type { GenericSchema } from 'valibot';
 import type { InitParameters } from './yandex-metrika';
-import { any, array, boolean, looseObject, nullish, number, object, optional, string, union } from 'valibot';
+import { any, array, boolean, looseObject, nullish, number, object, optional, picklist, string, union } from 'valibot';
 
 const options = object({
 	accurateTrackBounce: optional(union([number(), boolean()])),
@@ -41,5 +41,6 @@ export const YandexMetrikaSchemeOptions = object({
 	delay: number(),
 	cdn: boolean(),
 	verification: nullish(string()),
+	position: picklist(['head', 'bodyClose', 'bodyOpen']),
 	options: optional(options)
 });
