@@ -55,21 +55,22 @@ export default defineNuxtConfig({
 
 ## Options
 
-| Name                | Default value | Type    | Description                                                                                                                                      |
-| ------------------- | ------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| accurateTrackBounce | true          | Boolean | Number                                                                                                                                           | Accurate bounce rate The parameter can accept these values: true — Enable the accurate bounce rate, with a non-bounce event registered after 15000 ms (15 s). false — Don't enable the accurate bounce rate. <N> (integer) — Enable the accurate bounce rate. Non-bounce events are recorded after <N> ms. |
-| childIframe         | false         | Boolean | Whether to record iframe contents without a tag in a child window                                                                                |
-| clickmap            | true          | Boolean | Whether to collect data for a click map                                                                                                          |
-| defer               | false         | Boolean | Whether to disable automatically sending data during tag initialization                                                                          |
-| ecommerce           | false         | Boolean | String                                                                                                                                           | Array                                                                                                                                                                                                                                                                                                      | Collect data for e-commerce — Ecommerce. true — Enable e-commerce data collection. Data is transmitted via a JavaScript array named dataLayer in the global namespace (window.dataLayer) false — Disable Ecommerce data collection. <objectName> (String) — Enable Ecommerce data collection. Data is transmitted via a JavaScript array named <objectName> in the global namespace (window.<objectName>) <array> (Array) — Enable Ecommerce data collection. Data is transmitted via a JavaScript <array> |
-| params              | —             | Object  | Array                                                                                                                                            | Session parameters transmitted during tag initialization To transmit session parameters at any other time, use the params method                                                                                                                                                                           |
-| userParams          | —             | Object  | Parameters of site users that are transmitted when initializing the tag To transmit user parameters at any other time, use the userParams method |
-| trackHash           | false         | Boolean | Hash tracking in the browser's address bar                                                                                                       |
-| trackLinks          | true          | Boolean | Track clicks on outbound links                                                                                                                   |
-| trustedDomains      | —             | Array   | Indicates a trusted domain for recording the contents of a child iframe. Contains the domain address of the parent window                        |
-| type                | 0             | Number  | Tag type. 1 for YAN                                                                                                                              |
-| webvisor            | false         | Boolean | Whether to use Session Replay                                                                                                                    |
-| triggerEvent        | false         | Boolean | Whether to check if the tag is ready                                                                                                             |
+| Name                | Default value | Type    | Description |
+|---------------------|---------------|---------|-------------|
+| accurateTrackBounce | true          | Boolean / Number | Accurate bounce rate. Possible values: `true` — enable accurate bounce rate (non-bounce event after 15000 ms). `false` — disable accurate bounce rate. `<N>` (integer) — enable accurate bounce rate with non-bounce event after `<N>` ms. |
+| childIframe         | false         | Boolean | Whether to record iframe contents without a tag in a child window |
+| clickmap            | true          | Boolean | Whether to collect data for a click map |
+| defer               | false         | Boolean | Whether to disable automatic data sending during tag initialization |
+| ecommerce           | false         | Boolean / String / Array | Collect e-commerce data. `true` — data is sent via `window.dataLayer`. `false` — disable e-commerce. `<objectName>` (String) — data is sent via `window.<objectName>`. `<array>` (Array) — data is sent via a JavaScript array |
+| params              | —             | Object / Array | Session parameters sent during tag initialization. To send later, use the `params` method |
+| userParams          | —             | Object | User parameters sent during tag initialization. To send later, use the `userParams` method |
+| trackHash           | false         | Boolean | Track URL hash changes in the browser address bar |
+| trackLinks          | true          | Boolean | Track clicks on outbound links |
+| trustedDomains      | —             | Array   | Trusted domains for recording child iframe contents |
+| type                | 0             | Number  | Tag type. `1` — YAN |
+| webvisor            | false         | Boolean | Enable Session Replay (WebVisor) |
+| triggerEvent        | false         | Boolean | Whether to check if the tag is ready |
+
 
 For more information:
 
