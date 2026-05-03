@@ -1,6 +1,18 @@
-import type { GenericSchema } from 'valibot';
-import type { InitParameters } from './yandex-metrika';
-import { any, array, boolean, looseObject, nullish, number, object, optional, picklist, string, union } from 'valibot';
+import type { GenericSchema } from "valibot";
+import type { InitParameters } from "./yandex-metrika";
+import {
+	any,
+	array,
+	boolean,
+	looseObject,
+	nullish,
+	number,
+	object,
+	optional,
+	picklist,
+	string,
+	union,
+} from "valibot";
 
 const options = object({
 	accurateTrackBounce: optional(union([number(), boolean()])),
@@ -12,19 +24,19 @@ const options = object({
 			array(
 				looseObject({
 					order_price: optional(number()),
-					currency: optional(string())
-				})
+					currency: optional(string()),
+				}),
 			),
 			looseObject({
 				order_price: optional(number()),
-				currency: optional(string())
-			})
-		])
+				currency: optional(string()),
+			}),
+		]),
 	),
 	userParams: optional(
 		looseObject({
-			UserID: optional(number())
-		})
+			UserID: optional(number()),
+		}),
 	),
 	trackHash: optional(boolean()),
 	trackLinks: optional(boolean()),
@@ -32,7 +44,7 @@ const options = object({
 	type: optional(number()),
 	webvisor: optional(boolean()),
 	triggerEvent: optional(boolean()),
-	sendTitle: optional(boolean())
+	sendTitle: optional(boolean()),
 }) satisfies GenericSchema<InitParameters>;
 
 export const YandexMetrikaSchemeOptions = object({
@@ -41,6 +53,6 @@ export const YandexMetrikaSchemeOptions = object({
 	delay: number(),
 	cdn: boolean(),
 	verification: nullish(string()),
-	position: picklist(['head', 'bodyClose', 'bodyOpen']),
-	options: optional(options)
+	position: picklist(["head", "bodyClose", "bodyOpen"]),
+	options: optional(options),
 });

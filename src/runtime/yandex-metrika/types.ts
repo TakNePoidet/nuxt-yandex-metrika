@@ -57,33 +57,41 @@ export interface People {
 }
 
 export const Methods = {
-	Init: 'init',
-	AddFileExtension: 'addFileExtension',
-	ExtLink: 'extLink',
-	File: 'file',
-	FirstPartyParams: 'firstPartyParams',
-	FirstPartyParamsHashed: 'firstPartyParamsHashed',
-	GetClientID: 'getClientID',
-	Hit: 'hit',
-	NotBounce: 'notBounce',
-	Params: 'params',
-	ReachGoal: 'reachGoal',
-	SetUserID: 'setUserID',
-	UserParams: 'userParams'
+	Init: "init",
+	AddFileExtension: "addFileExtension",
+	ExtLink: "extLink",
+	File: "file",
+	FirstPartyParams: "firstPartyParams",
+	FirstPartyParamsHashed: "firstPartyParamsHashed",
+	GetClientID: "getClientID",
+	Hit: "hit",
+	NotBounce: "notBounce",
+	Params: "params",
+	ReachGoal: "reachGoal",
+	SetUserID: "setUserID",
+	UserParams: "userParams",
 } as const;
 
 export interface YandexMetrikaApi {
 	init: (options: Partial<InitParameters>) => void;
 	addFileExtension: (extensions?: string | string[]) => void;
-	extLink: <CTX>(url: string, options: Omit<HitOptions<CTX>, 'referer'>) => void;
+	extLink: <CTX>(
+		url: string,
+		options: Omit<HitOptions<CTX>, "referer">,
+	) => void;
 	file: <CTX>(url: string, options?: HitOptions<CTX>) => void;
 	firstPartyParams: (people: People) => void;
 	firstPartyParamsHashed: (people: People) => void;
 	getClientID: (cb: (clientID: number) => void) => void;
 	hit: <CTX>(url: string, options?: HitOptions<CTX>) => void;
-	notBounce: <CTX>(options: Pick<HitOptions<CTX>, 'ctx' | 'callback'>) => void;
+	notBounce: <CTX>(options: Pick<HitOptions<CTX>, "ctx" | "callback">) => void;
 	params: (params: VisitParameters) => void;
-	reachGoal: <CTX>(target: string, params: VisitParameters, callback?: (this: CTX) => void, ctx?: CTX) => void;
+	reachGoal: <CTX>(
+		target: string,
+		params: VisitParameters,
+		callback?: (this: CTX) => void,
+		ctx?: CTX,
+	) => void;
 	setUserID: (userId: string) => void;
 	userParams: (params: UserParameters) => void;
 }
