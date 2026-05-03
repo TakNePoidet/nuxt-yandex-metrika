@@ -1,15 +1,26 @@
 /* eslint-disable unused-imports/no-unused-vars, prefer-rest-params */
-import type { ValueOf } from '@prleasing/utility';
-import type { HitOptions, InitParameters, People, UserParameters, VisitParameters, YandexMetrikaApi } from './types';
-import { consola } from 'consola';
-import { Methods } from './types';
+import type { ValueOf } from "@prleasing/utility";
+import type {
+	HitOptions,
+	InitParameters,
+	People,
+	UserParameters,
+	VisitParameters,
+	YandexMetrikaApi,
+} from "./types";
+import { consola } from "consola";
+import { Methods } from "./types";
 
-export * from './types';
+export * from "./types";
 
 export function metrika(id: string, debug: boolean = false): YandexMetrikaApi {
 	function call(type: ValueOf<typeof Methods>, ...args: unknown[]) {
 		if (debug) {
 			consola.info(`[yandex-metrika] ${type}`, ...args);
+		}
+		if (typeof window.ym !== "function") {
+			consola.warn("[yandex-metrika] window.ym is not loaded yet");
+			return;
 		}
 		window.ym(id, type, ...args);
 	}
@@ -23,7 +34,7 @@ export function metrika(id: string, debug: boolean = false): YandexMetrikaApi {
 			call(Methods.AddFileExtension, ...arguments);
 		},
 
-		extLink<CTX>(url: string, options: Omit<HitOptions<CTX>, 'referer'> = {}) {
+		extLink<CTX>(url: string, options: Omit<HitOptions<CTX>, "referer"> = {}) {
 			call(Methods.ExtLink, ...arguments);
 		},
 
@@ -43,11 +54,11 @@ export function metrika(id: string, debug: boolean = false): YandexMetrikaApi {
 			call(Methods.GetClientID, ...arguments);
 		},
 
-		hit<CTX>(url = '', options?: HitOptions<CTX>) {
+		hit<CTX>(url = "", options?: HitOptions<CTX>) {
 			call(Methods.Hit, ...arguments);
 		},
 
-		notBounce<CTX>(options: Pick<HitOptions<CTX>, 'ctx' | 'callback'> = {}) {
+		notBounce<CTX>(options: Pick<HitOptions<CTX>, "ctx" | "callback"> = {}) {
 			call(Methods.NotBounce, ...arguments);
 		},
 
@@ -55,7 +66,12 @@ export function metrika(id: string, debug: boolean = false): YandexMetrikaApi {
 			call(Methods.Params, ...arguments);
 		},
 
-		reachGoal<CTX>(target: string, params: VisitParameters, callback?: (this: CTX) => void, ctx?: CTX): void {
+		reachGoal<CTX>(
+			target: string,
+			params: VisitParameters,
+			callback?: (this: CTX) => void,
+			ctx?: CTX,
+		): void {
 			call(Methods.ReachGoal, ...arguments);
 		},
 
@@ -65,6 +81,6 @@ export function metrika(id: string, debug: boolean = false): YandexMetrikaApi {
 
 		userParams(params: UserParameters = {}) {
 			call(Methods.UserParams, ...arguments);
-		}
+		},
 	};
 }
