@@ -6,10 +6,13 @@ import { Methods } from './types';
 
 export * from './types';
 
-export function metrika(id: string, debug: boolean = false): YandexMetrikaApi {
+export function metrika(id: string, debug: boolean = false, enabled: boolean = true): YandexMetrikaApi {
 	function call(type: ValueOf<typeof Methods>, ...args: unknown[]) {
 		if (debug) {
 			consola.info(`[yandex-metrika] ${type}`, ...args);
+		}
+		if (!enabled) {
+			return;
 		}
 		window.ym(id, type, ...args);
 	}

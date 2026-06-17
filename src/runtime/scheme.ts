@@ -37,6 +37,7 @@ const options = object({
 
 export const YandexMetrikaSchemeOptions = object({
 	id: string(),
+	enabled: boolean(),
 	debug: boolean(),
 	delay: number(),
 	cdn: boolean(),
