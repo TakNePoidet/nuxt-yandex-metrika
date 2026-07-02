@@ -1,15 +1,14 @@
 import type { YandexMetrikaModuleOptions } from '../types';
 import type { YandexMetrikaApi } from './yandex-metrika';
-import { useRuntimeConfig } from '#app';
+import { useNuxtApp, useRuntimeConfig } from '#app';
 
 import { useHead, useScriptTriggerIdleTimeout } from '#imports';
 import { useRegistryScript } from '#nuxt-scripts/utils';
-import { createSharedComposable } from '@vueuse/core';
 import { YandexMetrikaSchemeOptions } from './scheme';
 import { metrika } from './yandex-metrika';
 
-function _useYandexMetrikaScript<T extends YandexMetrikaApi>() {
-	return useRegistryScript<T, typeof YandexMetrikaSchemeOptions>(
+function _useYandexMetrikaScript() {
+	return useRegistryScript<YandexMetrikaApi, typeof YandexMetrikaSchemeOptions>(
 		'yandex-metrika',
 		(config) => {
 			const { id, cdn, delay, debug, enabled = true, verification, options = {}, position = 'head' } = config;
@@ -21,27 +20,21 @@ function _useYandexMetrikaScript<T extends YandexMetrikaApi>() {
 						{
 							tagPosition: position,
 							innerHTML:
-								'window.ym=window.ym||function(){(window.ym.a=window.ym.a||[]).push(arguments)};window.ym.l=(new Date).getTime();'
+								'window.ym=window.ym||function(){(window.ym.a=window.ym.a||[]).push(arguments)};window.ym.l=Date.now();'
 						}
-					]
-				});
-
-				if (verification) {
-					useHead({
+					],
+					...(verification && {
 						meta: [{ name: 'yandex-verification', content: verification }]
-					});
-				}
-
-				if (!import.meta.dev) {
-					useHead({
+					}),
+					...(!import.meta.dev && {
 						noscript: [
 							{
 								innerHTML: `<div><img src="https://mc.yandex.ru/watch/${id}" style="position:absolute; left:-9999px;" alt=""></div>`,
 								tagPosition: position
 							}
 						]
-					});
-				}
+					})
+				});
 			}
 
 			return {
@@ -69,10 +62,15 @@ function _useYandexMetrikaScript<T extends YandexMetrikaApi>() {
 	);
 }
 
-export const useYandexMetrikaScript = createSharedComposable(_useYandexMetrikaScript);
+type YandexMetrikaScript = ReturnType<typeof _useYandexMetrikaScript>;
 
-function _useYandexMetrika() {
-	return useYandexMetrikaScript().proxy as YandexMetrikaApi;
+export function useYandexMetrikaScript(): YandexMetrikaScript {
+	const nuxtApp = useNuxtApp() as ReturnType<typeof useNuxtApp> & { _yandexMetrikaScript?: YandexMetrikaScript };
+
+	nuxtApp._yandexMetrikaScript ??= _useYandexMetrikaScript();
+	return nuxtApp._yandexMetrikaScript;
 }
 
-export const useYandexMetrika = createSharedComposable(_useYandexMetrika);
+export function useYandexMetrika(): YandexMetrikaApi {
+	return useYandexMetrikaScript().proxy as YandexMetrikaApi;
+}
