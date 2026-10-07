@@ -16,6 +16,9 @@ node_modules
 # Generated dirs
 dist
 
+# Linter cache
+.eslintcache
+
 # Nuxt
 .nuxt
 .output

@@ -12,33 +12,36 @@ function _useYandexMetrikaScript<T extends YandexMetrikaApi>() {
 	return useRegistryScript<T, typeof YandexMetrikaSchemeOptions>(
 		'yandex-metrika',
 		(config) => {
-			const { id, cdn, delay, debug, verification, options = {}, position = 'head' } = config;
-			const api = metrika(id, debug);
-			useHead({
-				script: [
-					{
-						tagPosition: position,
-						innerHTML:
-							'window.ym=window.ym||function(){(window.ym.a=window.ym.a||[]).push(arguments)};window.ym.l=(new Date).getTime();'
-					}
-				]
-			});
+			const { id, cdn, delay, debug, enabled = true, verification, options = {}, position = 'head' } = config;
+			const api = metrika(id, debug, enabled);
 
-			if (verification) {
+			if (enabled) {
 				useHead({
-					meta: [{ name: 'yandex-verification', content: verification }]
-				});
-			}
-
-			if (!import.meta.dev) {
-				useHead({
-					noscript: [
+					script: [
 						{
-							innerHTML: `<div><img src="https://mc.yandex.ru/watch/${id}" style="position:absolute; left:-9999px;" alt=""></div>`,
-							tagPosition: position
+							tagPosition: position,
+							innerHTML:
+								'window.ym=window.ym||function(){(window.ym.a=window.ym.a||[]).push(arguments)};window.ym.l=(new Date).getTime();'
 						}
 					]
 				});
+
+				if (verification) {
+					useHead({
+						meta: [{ name: 'yandex-verification', content: verification }]
+					});
+				}
+
+				if (!import.meta.dev) {
+					useHead({
+						noscript: [
+							{
+								innerHTML: `<div><img src="https://mc.yandex.ru/watch/${id}" style="position:absolute; left:-9999px;" alt=""></div>`,
+								tagPosition: position
+							}
+						]
+					});
+				}
 			}
 
 			return {
@@ -50,13 +53,15 @@ function _useYandexMetrikaScript<T extends YandexMetrikaApi>() {
 					key: 'yandex-metrika',
 					bundle: false,
 					tagPosition: position,
-					trigger: delay ? useScriptTriggerIdleTimeout({ timeout: delay }) : undefined,
+					trigger: enabled ? (delay ? useScriptTriggerIdleTimeout({ timeout: delay }) : undefined) : 'manual',
 					use() {
 						return api;
 					}
 				},
 				async clientInit() {
-					api.init(options);
+					if (enabled) {
+						api.init(options);
+					}
 				}
 			};
 		},

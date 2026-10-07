@@ -17,6 +17,7 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 	},
 	defaults: {
 		id: 'xxx',
+		enabled: true,
 		debug: import.meta.env.NODE_ENV !== 'production',
 		delay: 0,
 		cdn: false,
@@ -40,6 +41,7 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 			options,
 			{
 				id: 'xxx',
+				enabled: true,
 				debug: import.meta.env.NODE_ENV !== 'production',
 				delay: 0,
 				cdn: false,
@@ -60,10 +62,12 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 			}
 		);
 		const resolver = createResolver(import.meta.url);
-		addPlugin({
-			mode: 'all',
-			src: resolver.resolve('./runtime/plugin')
-		});
+		if (options.enabled !== false) {
+			addPlugin({
+				mode: 'all',
+				src: resolver.resolve('./runtime/plugin')
+			});
+		}
 
 		addImports({
 			name: 'useYandexMetrika',

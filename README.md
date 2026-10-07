@@ -42,6 +42,7 @@ export default defineNuxtConfig({
   modules: ["nuxt-yandex-metrika"],
   yandexMetrika: {
     id: 'XXXXXX',
+    // enabled: process.env.NODE_ENV === "production",
     // debug: process.env.NODE_ENV !== "production",
     // delay: 0,
     // cdn: false,
@@ -56,6 +57,7 @@ export default defineNuxtConfig({
 | Name           | Default value | Type                             | Description                                                                                             |
 |----------------|---------------|----------------------------------|---------------------------------------------------------------------------------------------------------|
 | `id`           | —             | `string`                         | **Required.** Yandex Metrika counter ID                                                                 |
+| `enabled`      | `true`        | `boolean`                        | Conditionally enable/disable the module. When `false`, no script is injected and the composable becomes a no-op. Useful for staging environments |
 | `debug`        | `false`       | `boolean`                        | Enables debug mode. Useful during development. When enabled, additional logs are printed to the console |
 | `delay`        | `0`           | `number`                         | Delay (in milliseconds) before initializing Yandex Metrika                                              |
 | `cdn`          | `false`       | `boolean`                        | Load Metrika script from Yandex CDN instead of the default source                                       |
