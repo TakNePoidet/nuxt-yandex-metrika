@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.0.3
+
+[compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v2.0.2...v2.0.3)
+
+### 🩹 Fixes
+
+- One hit per navigation, sent after the page title updates ([60b6eaf](https://github.com/TakNePoidet/nuxt-yandex-metrika/commit/60b6eaf))
+
+### ❤️ Contributors
+
+- TakNePidet <yakin95@gmail.com>
+
 ## v2.0.2
 
 [compare changes](https://github.com/TakNePoidet/nuxt-yandex-metrika/compare/v2.0.1...v2.0.2)
