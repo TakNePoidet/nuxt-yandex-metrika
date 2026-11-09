@@ -1,19 +1,12 @@
 import type { YandexMetrikaModuleOptions } from './types';
-import { addImports, addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit';
+import { addImports, addPlugin, addTypeTemplate, createResolver, defineNuxtModule } from '@nuxt/kit';
 import { defu } from 'defu';
 
 export default defineNuxtModule<YandexMetrikaModuleOptions>({
 	meta: {
 		name: 'nuxt-yandex-metrika',
 		configKey: 'yandexMetrika',
-		compatibility: {
-			nuxt: '>=4.0.0'
-		}
-	},
-	moduleDependencies() {
-		return {
-			'@nuxt/scripts': {}
-		};
+		compatibility: { nuxt: '>=4.0.0' }
 	},
 	defaults: {
 		id: 'xxx',
@@ -38,36 +31,20 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
 	async setup(options, nuxt) {
 		nuxt.options.runtimeConfig.public.yandexMetrika = defu(
 			nuxt.options.runtimeConfig.public.yandexMetrika ?? {},
-			options,
-			{
-				id: 'xxx',
-				enabled: true,
-				debug: import.meta.env.NODE_ENV !== 'production',
-				delay: 0,
-				cdn: false,
-				verification: null,
-				position: 'head',
-				options: {
-					accurateTrackBounce: true,
-					childIframe: true,
-					clickmap: true,
-					defer: false,
-					ecommerce: false,
-					trackHash: false,
-					trackLinks: true,
-					webvisor: false,
-					triggerEvent: false,
-					sendTitle: true
-				}
-			}
+			options
 		);
+
 		const resolver = createResolver(import.meta.url);
-		if (options.enabled !== false) {
-			addPlugin({
-				mode: 'all',
-				src: resolver.resolve('./runtime/plugin')
-			});
-		}
+
+		addTypeTemplate({
+			filename: 'types/yandex-metrika-hooks.d.ts',
+			getContents: () => `import '${resolver.resolve('./runtime/types')}';`
+		});
+
+		addPlugin({
+			mode: 'all',
+			src: resolver.resolve('./runtime/plugin')
+		});
 
 		addImports({
 			name: 'useYandexMetrika',

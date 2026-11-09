@@ -1,65 +1,137 @@
-import { defineNuxtPlugin } from '#app';
-import { nextTick, useRouter } from '#imports';
-import { useYandexMetrikaScript } from './composable';
-
-/**
- * Хиты при переходах внутри приложения. Просмотр первой страницы отправляет init.
- *
- * - Переход на тот же адрес — не новый просмотр. Nuxt при старте повторяет
- *   начальную навигацию (router.replace с force), и раньше загруженная страница
- *   получала второй хит.
- * - Хит уходит, когда новая страница отрисована (page:finish) и Nuxt обновил
- *   <head>, — иначе Метрика записывала заголовок предыдущей страницы. Если
- *   page:finish не пришёл (компонент страницы не менялся, в приложении нет
- *   <NuxtPage>), хит уходит по таймауту.
- */
-const PAGE_FINISH_TIMEOUT = 1000;
+import { defineNuxtPlugin, useHead, useRouter, useRuntimeConfig } from '#app';
 
 export default defineNuxtPlugin({
+	name: 'yandex-metrika',
 	parallel: true,
-	setup(nuxtApp) {
-		const { proxy } = useYandexMetrikaScript();
+	async setup(nuxtApp) {
+		// 1. Базовый конфиг из nuxt.config.ts
+		const baseConfig = useRuntimeConfig().public.yandexMetrika as any;
 
-		if (!import.meta.client) {
-			return;
-		}
+		// 2. Даём хуку переопределить настройки (как vuetify:before-create)
+		let finalConfig = { ...baseConfig };
 
-		const router = useRouter();
-		let pending: { url: string; referer: string } | null = null;
-		let timer: ReturnType<typeof setTimeout> | undefined;
-
-		function send() {
-			clearTimeout(timer);
-
-			if (!pending) {
-				return;
+		await nuxtApp.callHook('yandexMetrika:before-init', {
+			options: finalConfig,
+			setOptions(partial: any) {
+				finalConfig = {
+					...finalConfig,
+					...partial,
+					options: { ...finalConfig.options, ...partial.options }
+				};
 			}
-
-			const { url, referer } = pending;
-			pending = null;
-			proxy.hit(url, { referer, title: document.title });
-		}
-
-		router.afterEach((to, from, failure) => {
-			// Начальная навигация (from без маршрута), отменённая или на тот же адрес.
-			if (failure || from.matched.length === 0 || to.fullPath === from.fullPath) {
-				return;
-			}
-
-			// Переход до того, как отрисовалась предыдущая страница, — её хит не теряем.
-			send();
-			pending = { url: to.fullPath, referer: from.fullPath };
-			timer = setTimeout(send, PAGE_FINISH_TIMEOUT);
 		});
 
-		nuxtApp.hooks.hook('page:finish', async () => {
-			if (!pending) {
-				return;
-			}
+		const { id, enabled, debug, cdn, options = {}, verification, position = 'head' } = finalConfig;
 
-			// Nuxt обновляет <head> на том же page:finish — даём ему отработать.
-			await nextTick();
-			setTimeout(send, 0);
+		// 3. Если id не задан — выходим, ничего не вставляем
+		if (!enabled || !id || id === 'xxx') {
+			if (debug) {
+				console.warn('[yandex-metrika] disabled or no id, skip');
+			}
+			return {
+				provide: {
+					yandexMetrika: {
+						init: () => {},
+						hit: () => {},
+						reachGoal: () => {}
+						// ... остальные методы no-op
+					}
+				}
+			};
+		}
+
+		// 4. Вставляем скрипт tag.js
+		useHead({
+			script: [
+				{
+					tagPosition: position,
+					innerHTML:
+						'window.ym=window.ym||function(){(window.ym.a=window.ym.a||[]).push(arguments)};window.ym.l=(new Date).getTime();'
+				}
+			]
 		});
+
+		if (verification) {
+			useHead({ meta: [{ name: 'yandex-verification', content: verification }] });
+		}
+
+		if (!import.meta.dev) {
+			useHead({
+				noscript: [
+					{
+						innerHTML: `<div><img src="https://mc.yandex.ru/watch/${id}" style="position:absolute; left:-9999px;" alt=""></div>`,
+						tagPosition: position
+					}
+				]
+			});
+		}
+
+		// 5. Загружаем tag.js (на клиенте)
+		if (import.meta.client) {
+			const src = cdn
+				? 'https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js'
+				: 'https://mc.yandex.ru/metrika/tag.js';
+
+			await new Promise<void>((resolve) => {
+				const existing = document.querySelector(`script[src="${src}"]`);
+				if (existing) {
+					resolve();
+					return;
+				}
+				const script = document.createElement('script');
+				script.src = src;
+				script.async = true;
+				script.onload = () => resolve();
+				script.onerror = () => resolve(); // не блокируем приложение
+				document.head.appendChild(script);
+			});
+
+			// 6. Инициализируем счётчик
+			(window as any).ym(id, 'init', options);
+		}
+
+		// 7. Создаём api для приложения
+		const api = {
+			init: (opts: any = options) => (window as any).ym?.(id, 'init', opts),
+			hit: (url: string, opts: any = {}) => (window as any).ym?.(id, 'hit', url, opts),
+			reachGoal: (target: string, params?: any, cb?: any, ctx?: any) =>
+				(window as any).ym?.(id, 'reachGoal', target, params, cb, ctx),
+			params: (p: any) => (window as any).ym?.(id, 'params', p),
+			userParams: (p: any) => (window as any).ym?.(id, 'userParams', p),
+			setUserID: (uid: string) => (window as any).ym?.(id, 'setUserID', uid),
+			notBounce: (opts: any) => (window as any).ym?.(id, 'notBounce', opts),
+			extLink: (url: string, opts: any) => (window as any).ym?.(id, 'extLink', url, opts),
+			file: (url: string, opts: any) => (window as any).ym?.(id, 'file', url, opts),
+			firstPartyParams: (p: any) => (window as any).ym?.(id, 'firstPartyParams', p),
+			firstPartyParamsHashed: (p: any) => (window as any).ym?.(id, 'firstPartyParamsHashed', p),
+			getClientID: (cb: (id: number) => void) => (window as any).ym?.(id, 'getClientID', cb)
+		};
+
+		// 8. Хиты при навигации
+		if (import.meta.client) {
+			const router = useRouter();
+			let pending: { url: string; referer: string } | null = null;
+
+			router.afterEach((to, from, failure) => {
+				if (failure || from.matched.length === 0 || to.fullPath === from.fullPath)
+					return;
+				if (pending)
+					api.hit(pending.url, { referer: pending.referer, title: document.title });
+				pending = { url: to.fullPath, referer: from.fullPath };
+			});
+
+			nuxtApp.hooks.hook('page:finish', () => {
+				if (pending) {
+					api.hit(pending.url, { referer: pending.referer, title: document.title });
+					pending = null;
+				}
+			});
+		}
+
+		return {
+			provide: {
+				yandexMetrika: api
+			}
+		};
 	}
 });
